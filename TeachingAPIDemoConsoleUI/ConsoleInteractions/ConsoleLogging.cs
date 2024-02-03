@@ -1,4 +1,4 @@
-﻿namespace TeachingAPIDemoConsoleUI
+﻿namespace TeachingAPIDemoConsoleUI.ConsoleInteractions
 {
     internal static class ConsoleLogging
     {

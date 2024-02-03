@@ -1,6 +1,6 @@
 ﻿namespace TeachingAPIDemoConsoleUI.FluentInterfaces
 {
-    public interface IMethodStage
+    public interface IMethodSelection
     {
         public IUrlSelection AsMethod(HttpMethod method);
     }
