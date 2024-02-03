@@ -5,9 +5,6 @@ namespace TeachingAPIDemoConsoleUI;
 
 internal class Program
 {
-    private static IList<Book> books = default;
-    private static IList<Dog> dogs = default;
-
     static void Main(string[] args)
     {
         var menuKey = UserInteraction.MainMenu();
@@ -35,11 +32,11 @@ internal class Program
 
         if (ApiPropertyHandler.UserEndpoint == "dog")
         {
-            UserInteraction.DogMenu(menuTwoKey, dogs);
+            UserInteraction.CrudMenu<Dog>(menuTwoKey);
         }
         else
         {
-            UserInteraction.BookMenu(menuTwoKey);
+            UserInteraction.CrudMenu<Book>(menuTwoKey);
         }
 
     }

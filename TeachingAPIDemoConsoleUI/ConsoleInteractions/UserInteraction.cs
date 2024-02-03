@@ -13,13 +13,57 @@ namespace TeachingAPIDemoConsoleUI.ConsoleInteractions
 
         public static ConsoleKey MenuLevelTwo()
         {
-            ConsoleLogging.PassMessage("1.Create \n2.Read \n3.Update \n4.Delete \n5.<= Go Back ");
+            ConsoleLogging.PassMessage("1.Create \n2.Read \n3.Inspect One \n4.Update \n5.Delete \n6.<= Go Back ");
             return GetKeyDown();
         }
 
         public static ConsoleKey GetKeyDown()
         {
             return Console.ReadKey(true).Key;
+        }
+        public static string GetUserResponse()
+        {
+            return Console.ReadLine();
+        }
+
+        public static void CrudMenu<T>(ConsoleKey key) where T : IApiType
+        {
+            switch (key)
+            {
+                case ConsoleKey.D1:
+                case ConsoleKey.NumPad1:
+                    IApiObjectRepo<T> repo = new ApiObjectRepo<T>(HttpClientFactory.Create());
+                    var obj = repo.Create(ApiPropertyHandler.BASE_URL, ApiPropertyHandler.UserEndpoint, CreateBook().ToJson());
+                    DisplayData<T>(obj);
+                    break;
+
+                case ConsoleKey.D2:
+                case ConsoleKey.NumPad2:
+                    repo = new ApiObjectRepo<T>(HttpClientFactory.Create());
+                    var data = repo.GetAll(ApiPropertyHandler.BASE_URL, ApiPropertyHandler.UserEndpoint);
+                    DisplayData<IList<T>, T>(data);
+                    break;
+
+                case ConsoleKey.D3:
+                case ConsoleKey.NumPad3:
+                    repo = new ApiObjectRepo<T>(HttpClientFactory.Create());
+                    obj = repo.GetById(ApiPropertyHandler.BASE_URL, ApiPropertyHandler.UserEndpoint, 1);
+                    DisplayData(obj);
+                    break;
+
+                case ConsoleKey.D4:
+                case ConsoleKey.NumPad4:
+
+                    break;
+
+                case ConsoleKey.D5:
+                case ConsoleKey.NumPad5:
+                    break;
+
+                case ConsoleKey.D6:
+                case ConsoleKey.NumPad6:
+                    break;
+            }
         }
 
         private static void DisplayData<T, U>(T data) where T : IList<U>
@@ -31,68 +75,40 @@ namespace TeachingAPIDemoConsoleUI.ConsoleInteractions
             }
         }
 
-        internal static void BookMenu(ConsoleKey key)
+        private static void DisplayData<T>(T data) where T : IApiType
         {
-            switch (key)
-            {
-                case ConsoleKey.D1:
-                case ConsoleKey.NumPad1:
-
-                    break;
-
-                case ConsoleKey.D2:
-                case ConsoleKey.NumPad2:
-                    BookRepo bookRepo = new BookRepo(HttpClientFactory.Create());
-
-                    var books = bookRepo.GetAllBooks(ApiPropertyHandler.BASE_URL, ApiPropertyHandler.UserEndpoint);
-
-                    DisplayData<IList<Book>, Book>(books);
-                    break;
-
-                case ConsoleKey.D3:
-                case ConsoleKey.NumPad3:
-
-                    break;
-
-                case ConsoleKey.D4:
-                case ConsoleKey.NumPad4:
-
-                    break;
-
-                case ConsoleKey.D5:
-                case ConsoleKey.NumPad5:
-                    break;
-            }
+            Console.WriteLine(data.ToJson());
         }
 
-        internal static void DogMenu(ConsoleKey key, IList<Dog> dogs)
+        private static Book CreateBook()
         {
-            switch (key)
+            var book = new Book();
+
+            ConsoleLogging.PassMessage("Title");
+            book.Title = GetUserResponse();
+
+            ConsoleLogging.PassMessage("Description?");
+            book.Description = GetUserResponse();
+
+            ConsoleLogging.PassMessage("Author Name?");
+            book.Author = GetUserResponse();
+
+            ConsoleLogging.PassMessage("When was this created?\n mm/dd/yyyy");
+
+            DateOnly created;
+            while (!DateOnly.TryParse(GetUserResponse(), out created))
             {
-                case ConsoleKey.D1:
-                case ConsoleKey.NumPad1:
-
-                    break;
-
-                case ConsoleKey.D2:
-                case ConsoleKey.NumPad2:
-
-                    break;
-
-                case ConsoleKey.D3:
-                case ConsoleKey.NumPad3:
-
-                    break;
-
-                case ConsoleKey.D4:
-                case ConsoleKey.NumPad4:
-
-                    break;
-
-                case ConsoleKey.D5:
-                case ConsoleKey.NumPad5:
-                    break;
+                ConsoleLogging.PassMessage("Invalid response, try again! mm/dd/yyyy", StatusCode.Error);
             }
+
+            book.CreatedDate = created;
+
+            ConsoleLogging.PassMessage("Genre?");
+            book.Genre = GetUserResponse();
+
+            return book;
         }
+
+
     }
 }

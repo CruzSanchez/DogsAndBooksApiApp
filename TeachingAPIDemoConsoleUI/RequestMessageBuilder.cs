@@ -80,7 +80,7 @@ namespace TeachingAPIDemoConsoleUI
         /// <returns>IBuilderStage</returns>
         public IBuilderStage WithBody(string? body = null)
         {
-            if (_body is null)
+            if (body is null)
             {
                 return this;
             }
