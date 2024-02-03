@@ -1,31 +1,56 @@
 ﻿using Newtonsoft.Json;
-using TeachingAPIDemoConsoleUI.Models;
+using TeachingAPIDemoConsoleUI.Factory;
 
 namespace TeachingAPIDemoConsoleUI;
 
 internal class Program
 {
+    private const string URL = "http://localhost:5000";
+
     static void Main(string[] args)
     {
-        Console.WriteLine("Do you want to view dogs or books?");
-        var userEndpoint = Console.ReadLine();
+        ConsoleLogging.PassMessage("Do you want to view dogs or books?");
+        var userEndpoint = Console.ReadLine() ?? string.Empty;
 
-        HttpClient client = new();
-        HttpRequestMessage request = new()
+        var request = RequestMessageBuilder.CreateRequest()
+                                            .AsMethod(HttpMethod.Get)
+                                            .ForUrl(URL)
+                                            .AtEndpoint(userEndpoint)
+                                            .Build();
+
+        var response = SendRequest(request).Result;
+
+        var body = GetJsonString(response).Result;
+
+        var objects = Desearialize(body, userEndpoint); //List<string> <generics>
+
+        foreach (var item in objects)
         {
-            Method = HttpMethod.Get,
-            RequestUri = new Uri($"https://43a3-2600-6c58-487f-aab8-4869-313b-83ac-a9a4.ngrok-free.app/{userEndpoint}")
-        };
+            Console.WriteLine(item.ToJson());
+        }
+    }
 
-        var response = client.SendAsync(request).Result;
+    private async static Task<HttpResponseMessage> SendRequest(HttpRequestMessage request)
+    {
+        var response = await HttpClientFactory.Create().SendAsync(request);
+        return response;
+    }
 
-        var body = response.Content.ReadAsStringAsync().Result;
+    private async static Task<string> GetJsonString(HttpResponseMessage response)
+    {
+        var json = await response.Content.ReadAsStringAsync();
+        return json;
+    }
 
-        var books = JsonConvert.DeserializeObject<List<Book>>(body); //List<string> <generics>
-
-        foreach (var book in books)
+    private static IList<IApiType> Desearialize(string json, string type)
+    {
+        if (type.Contains("book"))
         {
-            Console.WriteLine(book.ToJson());
+            return (IList<IApiType>)(JsonConvert.DeserializeObject<List<Book>>(json) ?? new List<Book>());
+        }
+        else
+        {
+            return (IList<IApiType>)(JsonConvert.DeserializeObject<List<Dog>>(json) ?? new List<Dog>());
         }
     }
 }
