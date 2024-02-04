@@ -1,4 +1,4 @@
-﻿namespace TeachingAPIDemoConsoleUI.ConsoleInteractions
+﻿namespace DogsAndBooksApi.ConsoleUI.ConsoleInteractions
 {
     internal static class ConsoleLogging
     {

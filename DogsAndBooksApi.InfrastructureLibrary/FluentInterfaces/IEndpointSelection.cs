@@ -1,4 +1,4 @@
-﻿namespace TeachingAPIDemoConsoleUI.FluentInterfaces
+﻿namespace DogsAndBooksApi.ConsoleUI.FluentInterfaces
 {
     public interface IEndpointSelection
     {

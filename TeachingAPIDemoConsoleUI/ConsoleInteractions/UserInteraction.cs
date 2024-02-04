@@ -1,7 +1,7 @@
-﻿using TeachingAPIDemoConsoleUI.Factory;
-using TeachingAPIDemoConsoleUI.Infrastructure;
+﻿using DogsAndBooksApi.ConsoleUI.Factory;
+using DogsAndBooksApi.ConsoleUI.Infrastructure;
 
-namespace TeachingAPIDemoConsoleUI.ConsoleInteractions
+namespace DogsAndBooksApi.ConsoleUI.ConsoleInteractions
 {
     internal static class UserInteraction
     {

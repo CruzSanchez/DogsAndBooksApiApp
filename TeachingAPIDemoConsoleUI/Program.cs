@@ -1,7 +1,7 @@
-﻿using TeachingAPIDemoConsoleUI.ConsoleInteractions;
-using TeachingAPIDemoConsoleUI.Infrastructure;
+﻿using DogsAndBooksApi.ConsoleUI.ConsoleInteractions;
+using DogsAndBooksApi.ConsoleUI.Infrastructure;
 
-namespace TeachingAPIDemoConsoleUI;
+namespace DogsAndBooksApi.ConsoleUI;
 
 internal class Program
 {

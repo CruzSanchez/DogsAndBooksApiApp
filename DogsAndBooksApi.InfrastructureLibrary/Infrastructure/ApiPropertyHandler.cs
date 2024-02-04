@@ -1,4 +1,4 @@
-﻿namespace TeachingAPIDemoConsoleUI.Infrastructure
+﻿namespace DogsAndBooksApi.ConsoleUI.Infrastructure
 {
     public static class ApiPropertyHandler
     {

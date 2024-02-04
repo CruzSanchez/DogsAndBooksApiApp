@@ -1,4 +1,4 @@
-﻿namespace TeachingAPIDemoConsoleUI.Factory
+﻿namespace DogsAndBooksApi.ConsoleUI.Factory
 {
     internal static class HttpMethodFactory
     {

@@ -1,4 +1,4 @@
-﻿namespace TeachingAPIDemoConsoleUI.Infrastructure
+﻿namespace DogsAndBooksApi.ConsoleUI.Infrastructure
 {
     public interface IApiObjectRepo<T> where T : IApiType
     {

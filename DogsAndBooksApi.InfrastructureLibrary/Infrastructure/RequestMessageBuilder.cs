@@ -1,6 +1,6 @@
-﻿using TeachingAPIDemoConsoleUI.FluentInterfaces;
+﻿using DogsAndBooksApi.ConsoleUI.FluentInterfaces;
 
-namespace TeachingAPIDemoConsoleUI
+namespace DogsAndBooksApi.ConsoleUI
 {
     internal class RequestMessageBuilder : IMethodSelection, IUrlSelection, IEndpointSelection, IBuilderStage
     {

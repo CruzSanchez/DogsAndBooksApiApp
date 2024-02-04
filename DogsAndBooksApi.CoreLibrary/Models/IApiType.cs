@@ -1,4 +1,4 @@
-﻿namespace TeachingAPIDemoConsoleUI
+﻿namespace DogsAndBooksApi.ConsoleUI
 {
     public interface IApiType
     {

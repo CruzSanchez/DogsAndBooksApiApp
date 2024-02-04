@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace TeachingAPIDemoConsoleUI
+namespace DogsAndBooksApi.ConsoleUI
 {
     public class Book : IApiType
     {

@@ -1,8 +1,8 @@
 ﻿
+using DogsAndBooksApi.ConsoleUI.Factory;
 using Newtonsoft.Json;
-using TeachingAPIDemoConsoleUI.Factory;
 
-namespace TeachingAPIDemoConsoleUI.Infrastructure
+namespace DogsAndBooksApi.ConsoleUI.Infrastructure
 {
     public class ApiObjectRepo<T>(HttpClient httpClient) : IApiObjectRepo<T> where T : IApiType
     {
