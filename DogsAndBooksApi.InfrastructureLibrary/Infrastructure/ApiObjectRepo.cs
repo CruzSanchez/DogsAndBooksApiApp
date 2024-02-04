@@ -4,7 +4,7 @@ using TeachingAPIDemoConsoleUI.Factory;
 
 namespace TeachingAPIDemoConsoleUI.Infrastructure
 {
-    internal class ApiObjectRepo<T>(HttpClient httpClient) : IApiObjectRepo<T> where T : IApiType
+    public class ApiObjectRepo<T>(HttpClient httpClient) : IApiObjectRepo<T> where T : IApiType
     {
         private readonly HttpClient _httpClient = httpClient;
 

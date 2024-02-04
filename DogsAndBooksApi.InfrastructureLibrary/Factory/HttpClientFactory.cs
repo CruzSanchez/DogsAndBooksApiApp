@@ -1,6 +1,6 @@
 ﻿namespace TeachingAPIDemoConsoleUI.Factory
 {
-    internal static class HttpClientFactory
+    public static class HttpClientFactory
     {
         public static HttpClient Create()
         {

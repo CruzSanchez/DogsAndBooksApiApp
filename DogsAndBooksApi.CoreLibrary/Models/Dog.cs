@@ -2,7 +2,7 @@
 
 namespace TeachingAPIDemoConsoleUI
 {
-    internal class Dog : IApiType
+    public class Dog : IApiType
     {
         public int Id { get; set; }
         public string Name { get; set; }

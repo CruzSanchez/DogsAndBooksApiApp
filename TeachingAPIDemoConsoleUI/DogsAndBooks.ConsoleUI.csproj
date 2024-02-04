@@ -11,9 +11,4 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\DogsAndBooksApi.CoreLibrary\DogsAndBooksApi.CoreLibrary.csproj" />
-    <ProjectReference Include="..\DogsAndBooksApi.InfrastructureLibrary\DogsAndBooksApi.InfrastructureLibrary.csproj" />
-  </ItemGroup>
-
 </Project>

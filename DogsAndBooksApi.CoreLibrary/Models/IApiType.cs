@@ -1,6 +1,6 @@
 ﻿namespace TeachingAPIDemoConsoleUI
 {
-    internal interface IApiType
+    public interface IApiType
     {
         public string ToJson();
     }

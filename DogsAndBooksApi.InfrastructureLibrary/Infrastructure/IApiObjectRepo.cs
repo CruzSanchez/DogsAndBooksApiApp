@@ -1,6 +1,6 @@
 ﻿namespace TeachingAPIDemoConsoleUI.Infrastructure
 {
-    internal interface IApiObjectRepo<T> where T : IApiType
+    public interface IApiObjectRepo<T> where T : IApiType
     {
         public IList<T> GetAll(string url, string endpoint);
         public T GetById(string url, string endpoint, int id);
