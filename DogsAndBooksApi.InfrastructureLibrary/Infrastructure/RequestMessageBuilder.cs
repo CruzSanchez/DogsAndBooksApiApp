@@ -1,6 +1,7 @@
-﻿using DogsAndBooksApi.ConsoleUI.FluentInterfaces;
+﻿using DogsAndBooksApi.InfrastructureLibrary.FluentInterfaces;
+using System.Text;
 
-namespace DogsAndBooksApi.ConsoleUI
+namespace DogsAndBooksApi.InfrastructureLibrary.Infrastructure
 {
     internal class RequestMessageBuilder : IMethodSelection, IUrlSelection, IEndpointSelection, IBuilderStage
     {
@@ -92,7 +93,11 @@ namespace DogsAndBooksApi.ConsoleUI
         public HttpRequestMessage Build()
         {
             if (_body is not null)
-                return new HttpRequestMessage(_method, $"{_url}/{_endpoint}/{_id}") { Content = new StringContent(_body) };
+                return new HttpRequestMessage(_method, $"{_url}/{_endpoint}/{_id}")
+                {
+                    Content = new StringContent(_body, Encoding.UTF8, "application/json")
+                };
+
             else
                 return new HttpRequestMessage(_method, $"{_url}/{_endpoint}/{_id}");
         }

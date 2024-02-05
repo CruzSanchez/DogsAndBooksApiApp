@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 
-namespace DogsAndBooksApi.ConsoleUI
+namespace DogsAndBooksApi.CoreLibrary.Models
+
 {
     public class Dog : IApiType
     {
@@ -8,7 +9,7 @@ namespace DogsAndBooksApi.ConsoleUI
         public string Name { get; set; }
         public string Owner { get; set; }
         public string Breed { get; set; }
-        public List<int> Friends { get; set; }
+        public IList<int> Friends { get; set; }
 
         public string ToJson()
         {

@@ -1,4 +1,4 @@
-﻿namespace DogsAndBooksApi.ConsoleUI
+﻿namespace DogsAndBooksApi.CoreLibrary.Models
 {
     public interface IApiType
     {

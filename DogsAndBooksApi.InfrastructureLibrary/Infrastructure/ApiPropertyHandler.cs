@@ -1,4 +1,4 @@
-﻿namespace DogsAndBooksApi.ConsoleUI.Infrastructure
+﻿namespace DogsAndBooksApi.InfrastructureLibrary.Infrastructure
 {
     public static class ApiPropertyHandler
     {

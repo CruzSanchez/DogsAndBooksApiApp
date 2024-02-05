@@ -1,4 +1,4 @@
-﻿namespace DogsAndBooksApi.ConsoleUI.Factory
+﻿namespace DogsAndBooksApi.InfrastructureLibrary.Factories
 {
     internal static class HttpMethodFactory
     {

@@ -1,4 +1,4 @@
-﻿namespace DogsAndBooksApi.ConsoleUI.FluentInterfaces
+﻿namespace DogsAndBooksApi.InfrastructureLibrary.FluentInterfaces
 {
     public interface IBuilderStage
     {

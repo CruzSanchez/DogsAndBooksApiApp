@@ -1,8 +1,8 @@
-﻿
-using DogsAndBooksApi.ConsoleUI.Factory;
+﻿using DogsAndBooksApi.CoreLibrary.Models;
+using DogsAndBooksApi.InfrastructureLibrary.Factories;
 using Newtonsoft.Json;
 
-namespace DogsAndBooksApi.ConsoleUI.Infrastructure
+namespace DogsAndBooksApi.InfrastructureLibrary.Infrastructure
 {
     public class ApiObjectRepo<T>(HttpClient httpClient) : IApiObjectRepo<T> where T : IApiType
     {
@@ -60,7 +60,7 @@ namespace DogsAndBooksApi.ConsoleUI.Infrastructure
             return deserializedJson;
         }
 
-        public void UpdateById(string url, string endpoint, int id, string body)
+        public bool UpdateById(string url, string endpoint, int id, string body)
         {
             var request = RequestMessageBuilder.CreateRequestBuilder()
                                             .AsMethod(HttpMethodFactory.GetHttpMethod("put"))
@@ -70,10 +70,10 @@ namespace DogsAndBooksApi.ConsoleUI.Infrastructure
                                             .WithBody(body)
                                             .Build();
 
-            _ = SendRequest(request).Result;
+            return SendRequest(request).Result.IsSuccessStatusCode;
         }
 
-        public void DeleteById(string url, string endpoint, int id)
+        public bool DeleteById(string url, string endpoint, int id)
         {
             var request = RequestMessageBuilder.CreateRequestBuilder()
                                             .AsMethod(HttpMethodFactory.GetHttpMethod("delete"))
@@ -82,7 +82,7 @@ namespace DogsAndBooksApi.ConsoleUI.Infrastructure
                                             .WithId(id)
                                             .Build();
 
-            _ = SendRequest(request).Result;
+            return SendRequest(request).Result.IsSuccessStatusCode;
         }
 
         private async Task<HttpResponseMessage> SendRequest(HttpRequestMessage request)

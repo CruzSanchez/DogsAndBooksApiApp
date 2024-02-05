@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 
-namespace DogsAndBooksApi.ConsoleUI
+namespace DogsAndBooksApi.CoreLibrary.Models
+
 {
     public class Book : IApiType
     {

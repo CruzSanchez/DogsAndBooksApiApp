@@ -1,4 +1,6 @@
-﻿namespace DogsAndBooksApi.ConsoleUI.ConsoleInteractions
+﻿using DogsAndBooksApi.CoreLibrary.Helpers;
+
+namespace DogsAndBooksApi.ConsoleUI.ConsoleInteractions
 {
     internal static class ConsoleLogging
     {
@@ -24,7 +26,7 @@
                     Console.ResetColor();
                     break;
 
-                default:
+                case StatusCode.NoCode:
                     PassMessage(message);
                     break;
             }
@@ -38,6 +40,11 @@
         public static void NewLine()
         {
             Console.WriteLine();
+        }
+
+        internal static void ClearConsole()
+        {
+            Console.Clear();
         }
     }
 }
