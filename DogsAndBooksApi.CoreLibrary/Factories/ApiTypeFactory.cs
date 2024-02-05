@@ -14,13 +14,13 @@ public static class ApiTypeFactory
     {
         Dog dog = new Dog();
 
-        requestDataFromUser("Title", StatusCode.NoCode);
+        requestDataFromUser("Name", StatusCode.NoCode);
         dog.Name = getUserInput();
 
-        requestDataFromUser("Description?", StatusCode.NoCode);
+        requestDataFromUser("Owner Name?", StatusCode.NoCode);
         dog.Owner = getUserInput();
 
-        requestDataFromUser("Author Name?", StatusCode.NoCode);
+        requestDataFromUser("Breed?", StatusCode.NoCode);
         dog.Breed = getUserInput();
 
         requestDataFromUser("If this dog has friends please specify the ids of each dog separated by commas. ex: 1,2,44,31", StatusCode.NoCode);
