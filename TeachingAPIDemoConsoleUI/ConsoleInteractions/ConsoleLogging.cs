@@ -4,7 +4,13 @@ namespace DogsAndBooksApi.ConsoleUI.ConsoleInteractions
 {
     internal static class ConsoleLogging
     {
-        public static void PassMessage(string message, StatusCode statusCode)
+        /// <summary>
+        /// Writes the specified string value, followed by the current line terminator, to the standard output stream.
+        /// Sets the color of the output stream based on the Status code arguments and resets the color to the default after printing the message.
+        /// </summary>
+        /// <param name="message">The string value to write to the standard output stream</param>
+        /// <param name="statusCode">An enum to represent the current status</param>
+        internal static void PassMessage(string message, StatusCode statusCode)
         {
             switch (statusCode)
             {
@@ -32,16 +38,26 @@ namespace DogsAndBooksApi.ConsoleUI.ConsoleInteractions
             }
         }
 
-        public static void PassMessage(string message)
+        /// <summary>
+        /// Writes the specified string value, followed by the current line terminator, to the standard output stream.
+        /// </summary>
+        /// <param name="message">The string value to write to the standard output stream</param>
+        internal static void PassMessage(string message)
         {
             Console.WriteLine(message);
         }
 
-        public static void NewLine()
+        /// <summary>
+        /// Supplys a line break to the standard output stream
+        /// </summary>
+        internal static void NewLine()
         {
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Clears the output stream
+        /// </summary>
         internal static void ClearConsole()
         {
             Console.Clear();

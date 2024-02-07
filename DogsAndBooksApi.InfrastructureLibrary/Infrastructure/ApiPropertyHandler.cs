@@ -2,7 +2,9 @@
 {
     public static class ApiPropertyHandler
     {
-        public const string BASE_URL = "http://localhost:5000";
+        /// <summary>
+        /// The endpoint to point to for interacting with the DogsAndBooksApi
+        /// </summary>
         public static string UserEndpoint { get; set; } = string.Empty;
     }
 }

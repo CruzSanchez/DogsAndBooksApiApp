@@ -6,6 +6,6 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        UserInteraction.MainMenu();
+        ConsoleInteraction.MainMenu();
     }
 }
